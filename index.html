@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Kesehatan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Website Kesehatan</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Beranda</h2>
+        <p>Informasi kesehatan terkini dan tips untuk hidup sehat.</p>
+    </section>
+
+    <section id="about">
+        <h2>Tentang Kami</h2>
+        <p>Kami adalah tim profesional yang berkomitmen untuk memberikan informasi kesehatan yang akurat dan bermanfaat.</p>
+    </section>
+
+    <section id="services">
+        <h2>Layanan</h2>
+        <ul>
+            <li>Konsultasi Kesehatan</li>
+            <li>Artikel Kesehatan</li>
+            <li>Webinar Kesehatan</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Kontak Kami</h2>
+        <form id="contactForm">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="message">Pesan:</label>
+            <textarea id="message" required></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+        <div id="responseMessage"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Website Kesehatan. Semua hak dilindungi.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
