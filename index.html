@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ogut handshome</title>
+    <title>Website Kesehatan</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <header>
@@ -36,24 +37,129 @@
             <li>Artikel Kesehatan</li>
             <li>Webinar Kesehatan</li>
         </ul>
-    </section>
 
-    <section id="contact">
-        <h2>Kontak Kami</h2>
+        <!--membuat kalkulator BMI-->
+        <h3>Kalkulator BMI</h3>
+        <form id="bmiForm">
+            <label for="weight">Berat Badan (kg):</label>
+            <input type="number" id="weight" required>
+        
+            <label for="height">Tinggi Badan (cm):</label>
+            <input type="number" id="height" required>
+        
+            <button type="submit">Hitung BMI</button>
+        </form>
+        <p id="bmiResult"></p>
+        
+        <script>
+            document.getElementById('bmiForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const weight = parseFloat(document.getElementById('weight').value);
+                const height = parseFloat(document.getElementById('height').value) / 100;
+                const bmi = (weight / (height * height)).toFixed(2);
+        
+                document.getElementById('bmiResult').textContent = `BMI Anda adalah ${bmi}`;
+            });
+        </script>
+
+        <!--membuat kebutuhan kalori-->
+    <h3>Kalkulator Kebutuhan Kalori</h3>
+    <form id="calorieForm">
+    <label for="age">Usia:</label>
+    <input type="number" id="age" required>
+
+    <label for="gender">Jenis Kelamin:</label>
+    <select id="gender">
+        <option value="male">Laki-laki</option>
+        <option value="female">Perempuan</option>
+    </select>
+
+    <label for="weightCalorie">Berat Badan (kg):</label>
+    <input type="number" id="weightCalorie" required>
+
+    <label for="heightCalorie">Tinggi Badan (cm):</label>
+    <input type="number" id="heightCalorie" required>
+
+    <label for="activity">Tingkat Aktivitas:</label>
+    <select id="activity">
+        <option value="sedentary">Sedentari (kurang aktivitas)</option>
+        <option value="light">Ringan</option>
+        <option value="moderate">Sedang</option>
+        <option value="active">Aktif</option>
+    </select>
+
+    <button type="submit">Hitung Kalori</button>
+</form>
+<p id="calorieResult"></p>
+
+<script>
+    document.getElementById('calorieForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const age = parseInt(document.getElementById('age').value);
+        const gender = document.getElementById('gender').value;
+        const weight = parseFloat(document.getElementById('weightCalorie').value);
+        const height = parseFloat(document.getElementById('heightCalorie').value);
+        const activity = document.getElementById('activity').value;
+
+        // Perhitungan dasar BMR
+        let bmr = gender === 'male'
+            ? 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
+            : 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
+
+        // Adjust BMR by activity level
+        const activityFactors = {
+            sedentary: 1.2,
+            light: 1.375,
+            moderate: 1.55,
+            active: 1.725
+        };
+        const calorieNeeds = (bmr * activityFactors[activity]).toFixed(2);
+
+        document.getElementById('calorieResult').textContent = `Kebutuhan kalori harian Anda adalah ${calorieNeeds} kalori.`;
+    });
+</script>
+
+
+
+
+<h3>Pengingat Hidrasi</h3>
+<form id="hydrationForm">
+    <label for="weightHydration">Berat Badan (kg):</label>
+    <input type="number" id="weightHydration" required>
+
+    <button type="submit">Hitung Kebutuhan Air</button>
+</form>
+<p id="hydrationResult"></p>
+
+<script>
+    document.getElementById('hydrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const weight = parseFloat(document.getElementById('weightHydration').value);
+        const waterIntake = (weight * 35).toFixed(0); // Rekomendasi 35 ml per kg berat badan
+
+        document.getElementById('hydrationResult').textContent = `Anda perlu minum sekitar ${waterIntake} ml air per hari.`;
+    });
+</script>
+        
+
         <form id="contactForm">
             <label for="name">Nama:</label>
-            <input type="text" id="name" required>
+            <input type="text" id="name" name="name" required>
+        
             <label for="email">Email:</label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" name="email" required>
+        
             <label for="message">Pesan:</label>
-            <textarea id="message" required></textarea>
+            <textarea id="message" name="message" required></textarea>
+        
             <button type="submit">Kirim</button>
         </form>
+        
         <div id="responseMessage"></div>
     </section>
 
     <footer>
-        <p>&copy; 2023 Website Kesehatan. Semua hak dilindungi.</p>
+        <p>&copy; 2024 Website Kesehatan. Dilindungi Dengan Keamanan Cyber.</p>
     </footer>
 
     <script src="main.js"></script>
