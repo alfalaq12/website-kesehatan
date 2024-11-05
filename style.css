@@ -1,4 +1,4 @@
-.{
+*{
 
     margin: 0px;
     padding: 0px;
@@ -16,13 +16,13 @@
 
 .logo  {
     float: left;
-    padding-top: 5PX;
+    padding-top: 10PX;
     padding-bottom: 10PX;
     padding-left: 30px; 
 }
 .menu{
     margin-left: 800px;
-    padding-top: 19px;
+    padding-top: 27px;
 
 }
 .menu ul li{
@@ -32,12 +32,12 @@
 }
 
 
-menu ul li a {
+.menu ul li a {
   text-decoration: none;
   color: white;
  }
 
- .menu ul li a:hover{
+.menu ul li a:hover{
     color: lightblue;
     font-style: italic;
  }
