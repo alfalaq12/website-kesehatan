@@ -42,11 +42,27 @@
     font-style: italic;
  }
 
- .gambar img {
-    width: 100%;
-    text-align: center;
+ .gambar{
+      display: flex;
+      width: 100%;
+ }
+ .wrapper {
+    width: 800px;
+    margin: auto;
+    border-radius: 5px;
+    overflow: hidden;
  }
 
+ .gambar img {
+    width: 100%;
+    
+ }
+#slide-1:target ~ .gambar{
+    margin-left: 0px;
+}
+#slide-2:target~ .gambar{
+    margin-left: 100px;
+}
 
 section {
     padding: 20px;
