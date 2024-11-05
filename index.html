@@ -9,9 +9,11 @@
 </head>
 <body>
     <header>
-        <nav>
-            <div class="wrapper" >
-                <div class="logo"><a href="">Rumahsehat</a></div>
+            <div class="navbar" >
+                <div class="logo">
+                    <h2>RUMAH SEHAT</h2>
+
+                    </div>
                 <div class="menu">
             <ul>
                 <li><a href="#home">Beranda</a></li>
@@ -20,14 +22,14 @@
                 <li><a href="#contact">Kontak</a></li>
             </ul>
             </div>
-        </nav>
-    </header>
-
+        </header>
+    
+        
+    <div class="gambar" >
     <section id="home">
-        <h2>Beranda</h2>
-        <p>Informasi kesehatan terkini dan tips untuk hidup sehat.</p>
-    </section>
+       <img src="medical_page-0001.jpg">
 
+    </section>
     <section id="about">
         <h2>Tentang Kami</h2>
         <p>Kami adalah tim profesional yang berkomitmen untuk memberikan informasi kesehatan yang akurat dan bermanfaat.</p>
@@ -97,7 +99,7 @@
 
 <script>
     document.getElementById('calorieForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); 
         const age = parseInt(document.getElementById('age').value);
         const gender = document.getElementById('gender').value;
         const weight = parseFloat(document.getElementById('weightCalorie').value);
