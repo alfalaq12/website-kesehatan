@@ -64,6 +64,13 @@
     margin-left: 100px;
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
 section {
     padding: 20px;
     margin: 10px;
