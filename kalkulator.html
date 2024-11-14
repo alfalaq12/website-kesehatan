@@ -1,105 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Kehamilan</title>
-    <style>
-        /* CSS Styling */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #a2d2ff, #d9f8c4);
-            color: #333;
-        }
-
-        .container {
-            text-align: center;
-            padding: 30px;
-            border-radius: 12px;
-            background-color: #fff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            width: 350px;
-        }
-
-        h1 {
-            color: #4A4E69;
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-size: 16px;
-            color: #555;
-        }
-
-        input[type="date"] {
-            padding: 10px;
-            margin: 12px 0;
-            width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-size: 16px;
-        }
-
-        button {
-            padding: 12px;
-            width: 100%;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(90deg, #6a67ce, #4c6ef5);
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
-        }
-
-        button:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
-
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #4A4E69;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kalkulator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>Kalkulator Kehamilan</h1>
-        <label for="lastPeriod">Tanggal Hari Pertama Haid Terakhir:</label>
-        <input type="date" id="lastPeriod">
-        <button onclick="calculateDueDate()">Hitung Tanggal Perkiraan Lahir</button>
-        <p id="result"></p>
+  <div class="calculator">
+    <div class="display">
+      <input type="text" id="display" none>
     </div>
-    
-    <script>
-        function calculateDueDate() {
-            const lastPeriod = document.getElementById("lastPeriod").value;
-            if (!lastPeriod) {
-                document.getElementById("result").innerText = "Silakan masukkan tanggal haid terakhir.";
-                return;
-            }
+    <div class="buttons">
+      <button class="btn" onclick="appendToDisplay('7')">7</button>
+      <button class="btn" onclick="appendToDisplay('8')">8</button>
+      <button class="btn" onclick="appendToDisplay('9')">9</button>
+      <button class="btn operator" onclick="appendToDisplay('+')">+</button>
 
-            const lastPeriodDate = new Date(lastPeriod);
-            const dueDate = new Date(lastPeriodDate);
-            dueDate.setDate(dueDate.getDate() + 280); // 280 hari atau 40 minggu
+      <button class="btn" onclick="appendToDisplay('4')">4</button>
+      <button class="btn" onclick="appendToDisplay('5')">5</button>
+      <button class="btn" onclick="appendToDisplay('6')">6</button>
+      <button class="btn operator" onclick="appendToDisplay('-')">-</button>
 
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById("result").innerText = 
-                `Perkiraan tanggal kelahiran: ${dueDate.toLocaleDateString('id-ID', options)}`;
-        }
-    </script>
+      <button class="btn" onclick="appendToDisplay('1')">1</button>
+      <button class="btn" onclick="appendToDisplay('2')">2</button>
+      <button class="btn" onclick="appendToDisplay('3')">3</button>
+      <button class="btn operator" onclick="appendToDisplay('*')">*</button>
+
+      <button class="btn" onclick="appendToDisplay('0')">0</button>
+      <button class="btn" onclick="clearDisplay()">C</button>
+      <button class="btn" onclick="calculateResult()">=</button>
+      <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
