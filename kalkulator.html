@@ -1,121 +1,105 @@
-        <!--membuat kalkulator BMI-->
-        <h3>Kalkulator BMI</h3>
-        <form id="bmiForm">
-            <label for="weight">Berat Badan (kg):</label>
-            <input type="number" id="weight" required>
-        
-            <label for="height">Tinggi Badan (cm):</label>
-            <input type="number" id="height" required>
-        
-            <button type="submit">Hitung BMI</button>
-        </form>
-        <p id="bmiResult"></p>
-        
-        <script>
-            document.getElementById('bmiForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const weight = parseFloat(document.getElementById('weight').value);
-                const height = parseFloat(document.getElementById('height').value) / 100;
-                const bmi = (weight / (height * height)).toFixed(2);
-        
-                document.getElementById('bmiResult').textContent = `BMI Anda adalah ${bmi}`;
-            });
-        </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Kehamilan</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #a2d2ff, #d9f8c4);
+            color: #333;
+        }
 
-        <!--membuat kebutuhan kalori-->
-    <h3>Kalkulator Kebutuhan Kalori</h3>
-    <form id="calorieForm">
-    <label for="age">Usia:</label>
-    <input type="number" id="age" required>
+        .container {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
 
-    <label for="gender">Jenis Kelamin:</label>
-    <select id="gender">
-        <option value="male">Laki-laki</option>
-        <option value="female">Perempuan</option>
-    </select>
+        h1 {
+            color: #4A4E69;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
 
-    <label for="weightCalorie">Berat Badan (kg):</label>
-    <input type="number" id="weightCalorie" required>
+        label {
+            font-size: 16px;
+            color: #555;
+        }
 
-    <label for="heightCalorie">Tinggi Badan (cm):</label>
-    <input type="number" id="heightCalorie" required>
+        input[type="date"] {
+            padding: 10px;
+            margin: 12px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
 
-    <label for="activity">Tingkat Aktivitas:</label>
-    <select id="activity">
-        <option value="sedentary">Sedentari (kurang aktivitas)</option>
-        <option value="light">Ringan</option>
-        <option value="moderate">Sedang</option>
-        <option value="active">Aktif</option>
-    </select>
+        button {
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #6a67ce, #4c6ef5);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
 
-    <button type="submit">Hitung Kalori</button>
-</form>
-<p id="calorieResult"></p>
+        button:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-<script>
-    document.getElementById('calorieForm').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        const age = parseInt(document.getElementById('age').value);
-        const gender = document.getElementById('gender').value;
-        const weight = parseFloat(document.getElementById('weightCalorie').value);
-        const height = parseFloat(document.getElementById('heightCalorie').value);
-        const activity = document.getElementById('activity').value;
+        button:active {
+            transform: scale(0.98);
+        }
 
-        // Perhitungan dasar BMR
-        let bmr = gender === 'male'
-            ? 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
-            : 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #4A4E69;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Kehamilan</h1>
+        <label for="lastPeriod">Tanggal Hari Pertama Haid Terakhir:</label>
+        <input type="date" id="lastPeriod">
+        <button onclick="calculateDueDate()">Hitung Tanggal Perkiraan Lahir</button>
+        <p id="result"></p>
+    </div>
+    
+    <script>
+        function calculateDueDate() {
+            const lastPeriod = document.getElementById("lastPeriod").value;
+            if (!lastPeriod) {
+                document.getElementById("result").innerText = "Silakan masukkan tanggal haid terakhir.";
+                return;
+            }
 
-        // Adjust BMR by activity level
-        const activityFactors = {
-            sedentary: 1.2,
-            light: 1.375,
-            moderate: 1.55,
-            active: 1.725
-        };
-        const calorieNeeds = (bmr * activityFactors[activity]).toFixed(2);
+            const lastPeriodDate = new Date(lastPeriod);
+            const dueDate = new Date(lastPeriodDate);
+            dueDate.setDate(dueDate.getDate() + 280); // 280 hari atau 40 minggu
 
-        document.getElementById('calorieResult').textContent = `Kebutuhan kalori harian Anda adalah ${calorieNeeds} kalori.`;
-    });
-</script>
-
-
-
-
-<h3>Pengingat Hidrasi</h3>
-<form id="hydrationForm">
-    <label for="weightHydration">Berat Badan (kg):</label>
-    <input type="number" id="weightHydration" required>
-
-    <button type="submit">Hitung Kebutuhan Air</button>
-</form>
-<p id="hydrationResult"></p>
-
-<script>
-    document.getElementById('hydrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const weight = parseFloat(document.getElementById('weightHydration').value);
-        const waterIntake = (weight * 35).toFixed(0); // Rekomendasi 35 ml per kg berat badan
-
-        document.getElementById('hydrationResult').textContent = `Anda perlu minum sekitar ${waterIntake} ml air per hari.`;
-    });
-</script>
-
-<h3>Pengingat Hidrasi</h3>
-<form id="hydrationForm">
-    <label for="weightHydration">Berat Badan (kg):</label>
-    <input type="number" id="weightHydration" required>
-
-    <button type="submit">Hitung Kebutuhan Air</button>
-</form>
-<p id="hydrationResult"></p>
-
-<script>
-    document.getElementById('hydrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const weight = parseFloat(document.getElementById('weightHydration').value);
-        const waterIntake = (weight * 35).toFixed(0); // Rekomendasi 35 ml per kg berat badan
-
-        document.getElementById('hydrationResult').textContent = `Anda perlu minum sekitar ${waterIntake} ml air per hari.`;
-    });
-</script>
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById("result").innerText = 
+                `Perkiraan tanggal kelahiran: ${dueDate.toLocaleDateString('id-ID', options)}`;
+        }
+    </script>
+</body>
+</html>
