@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Kehamilan</title>
     <style>
-        /* CSS Styling */
+        /* Styling Umum */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
@@ -23,17 +23,18 @@
             border-radius: 12px;
             background-color: #fff;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            width: 350px;
+            width: 90%; /* Sesuaikan lebar untuk layar kecil */
+            max-width: 400px; /* Batas maksimal untuk layar besar */
         }
 
         h1 {
             color: #4A4E69;
-            font-size: 26px;
+            font-size: 1.8rem; /* Gunakan unit fleksibel */
             margin-bottom: 20px;
         }
 
         label {
-            font-size: 16px;
+            font-size: 1rem;
             color: #555;
         }
 
@@ -44,7 +45,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-size: 16px;
+            font-size: 1rem;
         }
 
         button {
@@ -54,7 +55,7 @@
             border-radius: 8px;
             background: linear-gradient(90deg, #6a67ce, #4c6ef5);
             color: #fff;
-            font-size: 18px;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -70,8 +71,23 @@
 
         #result {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 1rem;
             color: #4A4E69;
+        }
+
+        /* Media Queries untuk layar kecil */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+
+            input[type="date"] {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
